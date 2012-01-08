@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory android:title="Ustawienia Maklera">
+
+		<ListPreference android:title="Aktualizacje (w tle)"
+			android:summary="Jak często ściągać aktualne notowania gdy program jest ukryty?"
+			android:key="frequencyBackground" android:defaultValue="300"
+			android:entries="@array/update_frequency" android:entryValues="@array/update_frequency_values" />
+
+		<ListPreference android:title="Aktualizacje"
+			android:summary="Jak często ściągać aktualne notowania gdy program jest widoczny?"
+			android:key="frequencyForeground" android:defaultValue="60"
+			android:entries="@array/update_frequency" android:entryValues="@array/update_frequency_values" />
+
+		<CheckBoxPreference android:key="autoStartup"
+			android:title="Uruchom przy starcie"
+			android:summary="Automatycznie uruchom Maklera w tle po włączeniu telefonu." />
+
+		<RingtonePreference android:title="Dźwięk alertu"
+			android:key="alertRingtone" android:ringtoneType="notification" />
+
+		<EditTextPreference android:dialogMessage="Wprowadź wartość prowizji w %"
+			android:key="commision" android:title="Prowizja"
+			android:summary="Prowizja używana w Portfelu"
+			android:singleLine="true"/>
+
+		<EditTextPreference android:dialogMessage="Wprowadź minimalną wartość prowizji"
+			android:key="minCommision" android:title="Minimalna prowizja"
+			android:summary="Minimalna prowizja"
+			android:singleLine="true"/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="Konto w domu maklerskim">
+		<CheckBoxPreference android:key="ownDataSource"
+			android:title="Konto w domu maklerskim"
+			android:summary="Zaznacz tę opcję jeśli posiadasz konto w domu maklerskim." />
+
+		<ListPreference android:title="Dom maklerski"
+			android:summary="W jakim domu maklerskim posiadasz konto?"
+			android:key="dataSourceType" android:defaultValue="pkobp"
+			android:entries="@array/data_source" android:entryValues="@array/data_source_values"
+			android:dependency="ownDataSource" />
+
+		<EditTextPreference android:dialogMessage="Wprowadź nazwę użytkownika"
+			android:key="dataSourceLogin" android:title="Nazwa użytkownika"
+			android:summary="Nazwa użytkownika w serwisie wybranym jako źródło danych."
+			android:singleLine="true" android:dependency="ownDataSource" />
+
+		<EditTextPreference android:dialogMessage="Wprowadź hasło"
+			android:key="dataSourcePassword" android:title="Hasło"
+			android:summary="Hasło użytkownika w serwisie wybranym jako źródło danych."
+			android:password="true" android:singleLine="true" android:dependency="ownDataSource" />
+	</PreferenceCategory>
+
+</PreferenceScreen>
